@@ -1,0 +1,55 @@
+% lab 1 place holder
+% contents will be updated soon ...
+%\documentclass[a4paper,12pt,landscape,twocolumn]{book}
+\documentclass[12pt]{article}
+\newcommand{\keyword}[1]{\textbf{#1}}
+\usepackage{layout}
+% load the geometry package and state the exact width and height of all margins
+\usepackage[a4paper, inner=1.5cm, outer=3cm, top=2cm,
+bottom=3cm, bindingoffset=1cm]{geometry}
+% geometry page options:
+% letterpaper, executivepaper, legalpaper, a0paper, ...
+% b0paper, b6paper
+% landscape, portrait (default)
+\begin{document}
+\title{Lab 1 - LAN Setup and OS Installation}
+\author{Raymond Chan}
+\date{\today}
+\maketitle
+\tableofcontents
+\newpage
+{\centering
+	\LARGE\bfseries Lab 1 - OS and Network Configuration \\
+%	\large\normalfont Written by Raymond Chan \\
+%	\normalsize\today
+
+}
+\section{Objectives}
+%
+\begin{itemize}
+	\item Setup Local Area Network environment
+	\item Install Host OS on bare metal\footnote{i.e. on a physical machine} and Guest OS on \keyword{VMs}
+	\item Configure and test network setup
+	\item Document Host and \keyword{VMs} settings
+\end{itemize}
+\section{Procedures}
+
+\subsection{OS Installation}
+\subsubsection{Host OS installation}
+	Create separate partitions and attached to the following mount points:
+	\begin{enumerate}
+	\item /home - at least 40GB
+	\item /var/lib/libvirt/images - at least 100GB
+	\item /boot - at least 1GB
+	\item swap - 8 GB or more
+	\end{enumerate}
+\subsubsection{Guest OS installation}
+%
+\subsection{Network \keyword{Configuration}}
+\subsubsection{IP address configuration}
+\subsubsection{Routing Configuration}
+%
+\section{Completing the Lab}
+%
+\end{document}
+
