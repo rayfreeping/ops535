@@ -1,0 +1,6 @@
+dn: dc=ops535,dc=com
+dc: ops535
+description: root LDAP entry for ops535
+objectClass: dcObject
+objectClass: organizationalUnit
+ou: rootobject
