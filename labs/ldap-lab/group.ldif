@@ -1,0 +1,4 @@
+dn: ou=Group,dc=ops535,dc=com
+ou: Group
+description: All groups in ops535
+objectClass: organizationalUnit
