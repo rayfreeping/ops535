@@ -1,0 +1,4 @@
+dn: ou=People,dc=ops535,dc=com
+ou: People
+description: All people in ops535
+objectClass: organizationalUnit
