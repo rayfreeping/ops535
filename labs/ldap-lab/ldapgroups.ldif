@@ -1,0 +1,14 @@
+dn: cn=ldapuser1,ou=Group,dc=ops535,dc=com
+objectClass: posixGroup
+objectClass: top
+cn: ldapuser1
+userPassword: {crypt}x
+gidNumber: 1001
+
+dn: cn=ldapuser2,ou=Group,dc=ops535,dc=com
+objectClass: posixGroup
+objectClass: top
+cn: ldapuser2
+userPassword: {crypt}x
+gidNumber: 1002
+
