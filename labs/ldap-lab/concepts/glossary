@@ -1,0 +1,7 @@
+LDIF - LDAP Directory Information File
+ldapadd -
+ldapdelete -
+ldapmodify -
+schema -
+DIT - Directory Information Tree
+objectClass -
