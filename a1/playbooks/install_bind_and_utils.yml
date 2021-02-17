@@ -1,0 +1,15 @@
+---
+- name: install bind and bind-utils
+  hosts: a1_hosts
+  become: yes
+
+  tasks:
+    - name: bind package is present
+      yum:
+        name: bind
+        state: latest
+
+    - name: bind-utils package is present
+      yum:
+        name: bind-utils
+        state: latest
