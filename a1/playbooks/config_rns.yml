@@ -1,0 +1,26 @@
+---
+- name: install /etc/named.conf
+  hosts: rns-ldap.gbecker.ops
+  become: yes
+
+  tasks:
+    - name: bind package is present
+      yum:
+        name: bind
+        state: latest
+
+    - name: latest named.conf file is present
+      template:
+        src: dns/rns/named.conf
+        dest: /etc/
+        owner: named
+        group: named
+        mode: '0640'
+
+    - name: lastest root zone file is present
+      template:
+        src: dns/rns/virtual_lab_root.zone
+        dest: /var/named/
+        owner: named
+        group: named
+        mode: '0644'
