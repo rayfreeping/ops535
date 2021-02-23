@@ -1,0 +1,46 @@
+Do the following at the beginning of each semester:
+(1) Create an assignment for students to submit their public keys on BB.
+(2) After the submission due date, download all the public keys from BB and transfer to matrix
+(3) unzip the public key zip file to the download directory
+2021-01
+├── download
+├── gradebook_OPS535NAA.04660.2211_PublicKeyforYourVMsinVirtualLab_2021-02-22-22-14-06.zip
+└── public_keys
+cd download
+unzip ../gradebook_OPS535NAA.04660.2211_PublicKeyforYourVMsinVirtualLab_2021-02-22-22-14-06.zip
+cd ../..
+$ tree 2021-01/download
+2021-01/download
+├── PublicKeyforYourVMsinVirtualLab_ksevak_attempt_2021-02-21-19-04-18_id_rsa.pub
+├── PublicKeyforYourVMsinVirtualLab_ksevak_attempt_2021-02-21-19-04-18.txt
+├── PublicKeyforYourVMsinVirtualLab_lkdnguyen_attempt_2021-02-22-11-00-50_id_rsa.pub.txt
+└── PublicKeyforYourVMsinVirtualLab_lkdnguyen_attempt_2021-02-22-11-00-50.txt
+
+(4) create subdirectory with student's name in public_keys and copy the public key file over:
+cd 2021-01
+files=$(ls download | grep id_rsa.pub)
+for file in ${files}
+do
+    stud_name=$(echo $file | awk -F_ '{print $2}')
+    mkdir public_keys/${stud_name} 2>/dev/null
+    cp download/${file} public_keys/${stud_name}/id_rsa.pub
+done
+
+(5) extract the updated public keys into a tar ball file:
+
+tar cvf public_keys ops535_pub_keys.tar
+
+(6) transfer the file ops535_pub_keys.tar to the lab server
+
+(7) Login to the lab server (which is in the virtual network).
+
+(8) Run the config_user.bash script to 
+    (a) create regular user account {stud} (student's Seneca name) on VM1
+    (b) upload student's public key to VM1
+    (c) copy student's public key on VM1 to regular user's /home/{stud}/.ssh/authorized_keys
+    (d) verify the md5sum of .ssh/authorized_keys and public_keys/{stud}/id_rsa.pub
+
+(9) Let the student to login to their VM1, collect baseline information and upload to BB
+(10) Create a new assignment submission for submitting VM1's baseline information.
+(11) Post the sudoer account name and password as feedback to the baseline submission.
+
