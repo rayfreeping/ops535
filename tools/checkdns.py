@@ -97,7 +97,7 @@ for fqdn in fqdn_s:
         else:
             print('  _/ Address query for',fqdn,'passed.')
     except:
-        print("  ee Adderss query for',fqdn,'failed!")
+        print('  ee Adderss query for',fqdn,'failed!')
 
 print("FQDN 2 IP:",fqdn2ip)
 # myResolver.read_resolv_conf("/etc/resolv.conf") <-- restore nameserver IP
