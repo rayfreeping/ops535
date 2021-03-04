@@ -6,14 +6,17 @@
 
 import dns.resolver
 
+dns_servers = ['pri','co','rns']
 network_id = input("Your Network ID (1-43): ")
 domain_name = input("Your Domain name: ")
+dns_server = ''
+while dns_server not in dns_servers:
+      dns_server = input("DNS Server to be tested (pri,co,rns):")
 
-pri_dns = '.'.join(['192','168',network_id,'2'])
-co_dns = '.'.join(['192','168',network_id,'3'])
-rns_dns = '.'.join(['192','168',network_id,'4'])
+last_octet = str(dns_servers.index(dns_server)+2)
+target_dns_server = '.'.join(['192','168',network_id,last_octet])
 
-print("Testing your DNS server, IP ",pri_dns)
+print("Testing your DNS server at IP:",target_dns_server)
 print("And your domain name is ", domain_name)
 
 dummy = input("Press ENTER when ready:")
@@ -36,7 +39,7 @@ for host in host_list:
 myResolver = dns.resolver.Resolver()
 # testing primary dns server 
 
-myResolver.nameservers=[pri_dns]
+myResolver.nameservers=[target_dns_server]
 try:
     myAnswers=myResolver.query(domain_name,"SOA")
     for rdata in myAnswers:
