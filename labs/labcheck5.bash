@@ -8,13 +8,13 @@
 rpms="tree nmap-ncat mailx postfix"
 for rpm in $rpms
 do
-	rpm -q $rpm 2>/dev/null
+	rpm -q $rpm &>/dev/null
 	if [ $? -ne 0 ]
 	then
-		echo "You must have the $rpm rpm package installed."
-		echo "Please install all of the following rpm packages:"
-		echo "rpm package: $rpms"
-		echo "Do the lab and then run this lab check script again."
+		echo "You must have the $rpm rpm package installed." >&2
+		echo "Please install all of the following rpm packages:" >&2
+		echo "rpm package: $rpms" >&2
+		echo "Do the lab and then run this lab check script again." >&2
 		exit 1
         fi
 done
@@ -26,6 +26,7 @@ then
 fi
 
 #Ensure the host name has been set correctly
+echo "OPS535 Lab 5 Check Lab Information"
 date
 echo
 echo "hostname:"`hostname`
@@ -35,15 +36,15 @@ echo
 
 domainname=`hostname -d`
 
-echo "INTERFACES"
+echo "OPS535 Lab 5 INTERFACES"
 cat /etc/sysconfig/network-scripts/ifcfg-*
 echo
 
-echo "Network Configuration"
+echo "OPS535 Lab 5 Network Configuration"
 ip addr show
 echo 
 
-echo "Firewall configuration"
+echo "OPS535 Lab 5 Firewall configuration"
 for zone in `firewall-cmd --get-active-zones | sed -r '/^[[:space:]]+/ d'`
 do
 	firewall-cmd --zone=$zone --list-all
@@ -53,20 +54,21 @@ filesystem=`df | grep /$ | cut -d' ' -f1`
 echo "UUID:"`blkid $filesystem | sed -r 's/^.*UUID="([-a-zA-Z0-9]+)".*$/\1/'`
 echo
 
+echo "OPS535 Lab 5 Postfix Service Status"
 echo "postfix:"`systemctl is-active postfix.service`
 echo "postfix:"`systemctl is-enabled postfix.service`
 echo
 
-echo "POSTFIX main.cf"
+echo "OPS535 Lab 5 Posftfix main.cf"
 cat /etc/postfix/main.cf
 
 echo 
  
-echo "POSTFIX aliases"
+echo "OPS535 Lab 5 Postfix aliases"
 cat /etc/aliases
 echo
 
-echo "POSTFIX mail to files"
+echo "OPS535 Lab 5 Postfix mail to files"
 echo "mail 2 file directory"
 tree /tmp
 echo
@@ -76,6 +78,10 @@ mail2file=$(find /tmp -name ops535.mail)
 cat $mail2file
 echo
 
-echo "OPEN NETWORK PORTS"
+echo "OPS535 Lab 5 Active Network Ports"
 ss -ant
+echo 
+
+echo "OPS535 Lab 5 End of Check List"
+date
 
