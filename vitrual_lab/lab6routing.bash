@@ -9,7 +9,10 @@ then
 fi
 X=${MY_VLS_NO}
 echo "Your Network Number is $X"
+
+#change the following variable if necessary
 OTHER_VLS_NOS=$(seq 1 43)
+
 Y=`echo ${OTHER_VLS_NOS}`
 echo "Route to be added for the network number(s) $Y"
 echo -n "Press ENTER to continue ... "
@@ -20,7 +23,7 @@ for y in $Y
 do
 	if [ "$X" -ne "$y" ]
 	then
-	    nmcli con modify ens192 +ipv4.routes "192.168.${y}.0 172.20.${y}.1 100"
+	    nmcli con modify ens192 +ipv4.routes "192.168.${y}.0/24 172.20.${y}.1 100"
 	    echo "Adding route to 192.168.${y}.0 network." 
 	fi
 done
