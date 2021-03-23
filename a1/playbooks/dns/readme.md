@@ -6,17 +6,19 @@ dns
 │   └── virtual_lab.cache
 ├── pri
 │   ├── external
-│   │   ├── gbecker.zone
-│   │   └── rev-gbecker.zone
-│   ├── gbecker.zone
+│   │   ├── gbk.zone
+│   │   └── rev-gbk.zone
+│   ├── gbk.zone
 │   ├── internal
-│   │   ├── gbecker.zone
-│   │   └── rev-gbecker.zone
+│   │   ├── gbk.zone
+│   │   └── rev-gbk.zone
 │   ├── named.conf
-│   └── rev-gbecker.zone
+│   └── rev-gbk.zone
 └── rns
     ├── backup_virtual_lab_root.zone
     ├── get_root_zone.sh
     ├── named.conf
     ├── raw.txt
     └── virtual_lab_root.zone
+    
+for replace 'gbk' with your own domain.
