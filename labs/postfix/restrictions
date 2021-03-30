@@ -2,3 +2,91 @@ Test 1:
 < smtpd_helo_required = no
 < smtpd_helo_restrictions = permit
 < smtpd_delay_reject = no
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+helo host.rchan.ops
+250 pri-dns.wsu15.ops
+mail from: root@host.rchan.ops
+250 2.1.0 Ok
+rcpt to: root@pri-dns.wsu15.ops
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+test 1
+.
+250 2.0.0 Ok: queued as D954F10AD058
+quit
+221 2.0.0 Bye
+
+===========================================
+Test 2: skip helo command
+< smtpd_helo_required = yes
+< smtpd_helo_restrictions = permit
+< smtpd_delay_reject = no
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+mail from: root@host.rchan.ops
+503 5.5.1 Error: send HELO/EHLO first
+
+*** required HELO ***
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+mail from: root@host.rchan.ops
+503 5.5.1 Error: send HELO/EHLO first
+HELO host.rchan.ops
+250 pri-dns.wsu15.ops
+mail from: root@host.rchan.ops
+250 2.1.0 Ok
+rcpt to: root@pri-dns.wsu15.ops
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+test 2
+smtpd_helo_required = yes
+.
+250 2.0.0 Ok: queued as 5AF8F10AD058
+bye
+502 5.5.2 Error: command not recognized
+exit
+502 5.5.2 Error: command not recognized
+quit
+221 2.0.0 Bye
+
+Message  7:
+From root@host.rchan.ops  Mon Mar 29 22:03:59 2021
+Return-Path: <root@host.rchan.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Status: R
+
+test 2
+smtpd_helo_required = yes
+
+=========================================
+test 3: smtpd_helo_restrictions
+             reject_non_fqdn_helo_hostname
+
+< smtpd_helo_required = yes
+< smtpd_helo_restrictions = reject_non_fqdn_helo_hostname, permit
+< smtpd_delay_reject = no
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+help abcde
+502 5.5.2 Error: command not recognized
+helo abcde
+504 5.5.2 <abcde>: Helo command rejected: need fully-qualified hostname
+helo myhost.ca
+250 pri-dns.wsu15.ops
+helo myhost-ca
+504 5.5.2 <myhost-ca>: Helo command rejected: need fully-qualified hostname
+helo a.b.c.d.e.f
+250 pri-dns.wsu15.ops
+
+Anything with a "." will be accepted.
+
+             
+             
