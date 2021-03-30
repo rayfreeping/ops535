@@ -88,5 +88,77 @@ helo a.b.c.d.e.f
 
 Anything with a "." will be accepted.
 
+================================================
+test 4: smtpd_client_restrictions =
+             reject_unknown_client_hostname
+the client IP address must be resoved to hostname, otherwise reject
+
+[instructor@pri-dns ~]$ nc 192.168.35.2 25
+450 4.7.25 Client host rejected: cannot find your hostname, [192.168.2.2]
+
+Add "192.168.2.2     mail.gbecker.ops" to /etc/hosts in 192.168.35.2
+
+[instructor@pri-dns ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+helo mail.gbecker.ops
+250 pri-dns.wsu15.ops
+mail from: admin@mail.gbecker.ops
+250 2.1.0 Ok
+rcpt to: root@pri-dns.wsu15.ops
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+test 4
+
+smtpd_client_restrictions --> reject_unknown_client_hostname
+
+must have PTR or entry in /etc/hosts file.
+.
+250 2.0.0 Ok: queued as 20D0710AD058
+
+== mail received ==
+Message 12:
+From admin@mail.gbecker.ops  Mon Mar 29 23:11:53 2021
+Return-Path: <admin@mail.gbecker.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Status: R
+
+test 4
+
+smtpd_client_restrictions --> reject_unknown_client_hostname
+
+must have PTR or entry in /etc/hosts file.
+
+===========================
+=  Note the difference    =
+===========================
+From admin@mail.gbecker.ops  Mon Mar 29 23:11:53 2021
+Return-Path: <admin@mail.gbecker.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Received: from mail.gbecker.ops (mail.gbecker.ops [192.168.2.2])
+        by pri-dns.wsu15.ops (Postfix) with SMTP id 20D0710AD058
+        for <root@pri-dns.wsu15.ops>; Mon, 29 Mar 2021 23:10:53 -0400 (EDT)
+
+test 4
+
+smtpd_client_restrictions --> reject_unknown_client_hostname
+
+must have PTR or entry in /etc/hosts file.
+
+-------------------------------- and ----
+From root@host.rchan.ops  Mon Mar 29 21:53:51 2021
+Return-Path: <root@host.rchan.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Received: from host.rchan.ops (unknown [192.168.35.1])
+        by pri-dns.wsu15.ops (Postfix) with SMTP id D954F10AD058
+        for <root@pri-dns.wsu15.ops>; Mon, 29 Mar 2021 21:53:23 -0400 (EDT)
+
+test 1
+============================================
+
+
              
              
