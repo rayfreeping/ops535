@@ -1,0 +1,264 @@
+Tue Mar 30 07:29:45 EDT 2021
+
+hostname:vm2.ops535.ops
+
+SELinux status:Enforcing
+
+INTERFACES
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=none
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME=enp1s0
+UUID=53162947-3f4d-46ba-b825-7d535697546d
+DEVICE=enp1s0
+ONBOOT=yes
+IPV6_DISABLED=yes
+IPADDR=192.168.149.2
+PREFIX=24
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME=enp7s0
+UUID=c14f38ae-b631-42a7-8944-5453f5132390
+DEVICE=enp7s0
+ONBOOT=yes
+IPADDR=192.168.49.2
+PREFIX=24
+BOOTPROTO=none
+IPV6_DISABLED=yes
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6INIT=no
+NAME=enp8s0
+UUID=7545b037-01cb-4b76-b133-319ed3a01db7
+DEVICE=enp8s0
+ONBOOT=yes
+PREFIX=24
+BOOTPROTO=dhcp
+IPV6_DISABLED=yes
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=dhcp
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6_DISABLED=yes
+IPV6INIT=no
+NAME=enp8s0
+UUID=650d98fa-2bbb-47cd-9482-b33be2b75766
+DEVICE=enp8s0
+ONBOOT=yes
+
+Firewall configuration
+public (active)
+  target: default
+  icmp-block-inversion: no
+  interfaces: enp1s0 enp7s0 enp8s0
+  sources: 
+  services: cockpit dhcpv6-client ssh
+  ports: 
+  protocols: 
+  masquerade: no
+  forward-ports: 
+  source-ports: 
+  icmp-blocks: 
+  rich rules: 
+UUID:34b7176b-01 34b7176b-02 6d849d81-ff8d-409a-b505-8eb18e855fcd a50569a8-2b55-4691-a119-a8c0ba5a3f60
+
+named:active
+named:disabled
+
+DNS config
+drwxrwx--T. 5 root named system_u:object_r:named_zone_t:s0 4096 Mar 30 07:17 /var/named
+
+total 68
+drwxrwx---. 2 named named system_u:object_r:named_cache_t:s0      23 Mar 27 19:31 data
+drwxrwx---. 2 named named system_u:object_r:named_cache_t:s0       6 Mar  1 10:20 dynamic
+-rw-r--r--. 1 root  root  unconfined_u:object_r:named_zone_t:s0  384 Mar 27 19:27 gbecker.zone
+-rw-r-----. 1 root  named system_u:object_r:named_conf_t:s0     2253 Mar  1 10:21 named.ca
+-rw-r-----. 1 root  named system_u:object_r:named_zone_t:s0      152 Mar  1 10:21 named.empty
+-rw-r-----. 1 root  named system_u:object_r:named_zone_t:s0      152 Mar  1 10:21 named.localhost
+-rw-r-----. 1 root  named system_u:object_r:named_zone_t:s0      168 Mar  1 10:21 named.loopback
+-rw-r--r--. 1 root  root  unconfined_u:object_r:named_zone_t:s0  385 Mar 27 19:30 ops535_zone
+-rw-r--r--. 1 named named system_u:object_r:named_zone_t:s0      512 Mar 27 20:38 ops535_zone.jbk
+-rw-r--r--. 1 named named system_u:object_r:named_zone_t:s0     3779 Mar 30 07:17 ops535_zone.signed
+-rw-r--r--. 1 named named system_u:object_r:named_zone_t:s0     8137 Mar 30 07:03 ops535_zone.signed.jnl
+-rw-r--r--. 1 root  root  unconfined_u:object_r:named_zone_t:s0  396 Mar 27 20:31 rev_zone
+-rw-r--r--. 1 named named system_u:object_r:named_zone_t:s0      512 Mar 27 20:56 rev_zone.jbk
+-rw-r--r--. 1 named named system_u:object_r:named_zone_t:s0     4273 Mar 30 07:17 rev_zone.signed
+-rw-r--r--. 1 named named system_u:object_r:named_zone_t:s0     9231 Mar 30 07:03 rev_zone.signed.jnl
+drwxrwx---. 2 named named system_u:object_r:named_cache_t:s0       6 Mar  1 10:20 slaves
+
+SEBool
+named_write_master_zones --> on
+
+named config
+//
+// named.conf
+//
+// Provided by Red Hat bind package to configure the ISC BIND named(8) DNS
+// server as a caching only nameserver (as a localhost DNS resolver only).
+//
+// See /usr/share/doc/bind*/sample/ for example named configuration files.
+//
+
+options {
+	listen-on port 53 { any; };
+	listen-on-v6 port 53 { ::1; };
+	directory 	"/var/named";
+	dump-file 	"/var/named/data/cache_dump.db";
+	statistics-file "/var/named/data/named_stats.txt";
+	memstatistics-file "/var/named/data/named_mem_stats.txt";
+	secroots-file	"/var/named/data/named.secroots";
+	recursing-file	"/var/named/data/named.recursing";
+	allow-query     { any; };
+
+	/* 
+	 - If you are building an AUTHORITATIVE DNS server, do NOT enable recursion.
+	 - If you are building a RECURSIVE (caching) DNS server, you need to enable 
+	   recursion. 
+	 - If your recursive DNS server has a public IP address, you MUST enable access 
+	   control to limit queries to your legitimate users. Failing to do so will
+	   cause your server to become part of large scale DNS amplification 
+	   attacks. Implementing BCP38 within your network would greatly
+	   reduce such attack surface 
+	*/
+	recursion no;
+
+	dnssec-enable yes;
+	dnssec-validation yes;
+
+	managed-keys-directory "/var/named/dynamic";
+
+	pid-file "/run/named/named.pid";
+	session-keyfile "/run/named/session.key";
+
+	/* https://fedoraproject.org/wiki/Changes/CryptoPolicy */
+	include "/etc/crypto-policies/back-ends/bind.config";
+};
+
+logging {
+        channel default_debug {
+                file "data/named.run";
+                severity dynamic;
+        };
+};
+
+zone "ops535.ops" IN {
+      type master;
+      file "ops535_zone";
+      key-directory "/etc/named/ops535.ops-keys";
+      inline-signing yes;
+      auto-dnssec maintain;
+};
+
+zone "49.168.192.in-addr.arpa" IN {
+      type master;
+      file "rev_zone";
+      key-directory "/etc/named/49.168.192.in-addr.arpa-keys";
+      inline-signing yes;
+      auto-dnssec maintain;
+};
+
+#include "/etc/named.rfc1912.zones";
+#include "/etc/named.root.key";
+
+
+keys
+total 16
+-rw-r--r--. 1 named named  603 Mar 27 20:06 Kops535.ops.+008+13564.key
+-rw-------. 1 named named 1776 Mar 27 20:06 Kops535.ops.+008+13564.private
+-rw-r--r--. 1 named named  429 Mar 27 20:05 Kops535.ops.+008+48796.key
+-rw-------. 1 named named 1012 Mar 27 20:05 Kops535.ops.+008+48796.private
+
+Kops535.ops.+008+13564.key
+; This is a key-signing key, keyid 13564, for ops535.ops.
+; Created: 20210328000631 (Sat Mar 27 20:06:31 2021)
+; Publish: 20210328000631 (Sat Mar 27 20:06:31 2021)
+; Activate: 20210328000631 (Sat Mar 27 20:06:31 2021)
+ops535.ops. IN DNSKEY 257 3 8 AwEAAaLPj7jL7n0eX1VczOZecE8jzhXivV1jAMJN8R3h3Ov+0h9NK2tz zY8jKEXTM/eAA4deh38cWlToK/t73HGTkDj7BwcBr+UjvqawlhxVh3Ik VVVPv7VLuc6gog8WJE3vDp4MLgVA4HUPFYrJwZHDV9rZFTjsr53CjY85 YmjopnYXMDwydh2yrpxbi32ljODkD+jpEJT8qNWjXL7RObqlBvXyPZV3 8UfEUKUTQfx42aKdGdQxXRRY/jh1eWYot7y8KvbjEMmUgD4eB+KrSyAx cf9yhlNCp7Cs8exjuVxdZ01qggAFz0lIdUb8XSAaPSX3pUfI3+19BwVk OEs3pBEL5UM=
+
+Kops535.ops.+008+13564.private
+Private-key-format: v1.3
+Algorithm: 8 (RSASHA256)
+Modulus: os+PuMvufR5fVVzM5l5wTyPOFeK9XWMAwk3xHeHc6/7SH00ra3PNjyMoRdMz94ADh16HfxxaVOgr+3vccZOQOPsHBwGv5SO+prCWHFWHciRVVU+/tUu5zqCiDxYkTe8OngwuBUDgdQ8VisnBkcNX2tkVOOyvncKNjzliaOimdhcwPDJ2HbKunFuLfaWM4OQP6OkQlPyo1aNcvtE5uqUG9fI9lXfxR8RQpRNB/HjZop0Z1DFdFFj+OHV5Zii3vLwq9uMQyZSAPh4H4qtLIDFx/3KGU0KnsKzx7GO5XF1nTWqCAAXPSUh1RvxdIBo9JfelR8jf7X0HBWQ4SzekEQvlQw==
+PublicExponent: AQAB
+PrivateExponent: BSt0E9kd5IkvW8WLmBENneW0KIu/mZSINKNG8bz3R+MahvXrWAkgUNg78iOntccx1X2R7d5Xm/SXWO/w6wZVgQmvinBqRmthJWfcDGBG4b/3mbLjkn0qFD6ThskcNAFQRIJ8f5w0xGLLO1H2vIsoYgGco+cYGHlSB2c6Eby5dGxxFrbwDctLZ6m75ut2PjYz4R9c6hLp1k5ZCUsGCxdz6zNVNTMeWOA+3NpQky1Yr6xouHma6svKtrEitwIGA0najwxkijL0hte9ruVgL4pHlEg+L57mqfMWw/ToDrnWVFyfBZDcWx3xwuF3gVhdV/1qRwrtKT0emVjDQ62ZMtEc8Q==
+Prime1: 13SAR0TyZ3Vo4tY7xH/O4g6N/X84vHMEctsCiubFYnnsN30ihRGCCb8XpvnSGpYW1lkfcSNRmUNOOEbz8ClCClIWgK51U1WXRyrnx/SW2yVnJw7cy7020FBZzo/HEfsrlQ0Lnc3IrVx5O0Y0tNkfBJbaYD4Fnbo3yb7MycZQkNk=
+Prime2: wXLu+3VPUriVdv9TfxnM9NsQZfH9A7tLOCxhZtkaMpzWnJpyQ71h7LbYXqvPe2L+hsklbuf2G/LVpL+nTnz7MSPh5UjS0Kt6BGwZvOBCfmzTlmVbHyMZiLFcddq/SpggPzmanjudsHDxTwWVfHJlcz3DDGW+iRkPkgvhdP9IlXs=
+Exponent1: Bk/jcjMS5vUJnZupJJiZ9wV2I3cWsm6sMrE34dng7oGj6fxAhqV8qcxvZPTsstqy0JTL1wSx30uZfwyVGPQcezDsd9ikl0xqoisfnzwLL2BpJTvKPC3O7UttVh/gNSamoDdBn93ngyyyYIouAR5bSkchHrCyeWx7Ne3hEgg9VAE=
+Exponent2: Q84AO/07R3hRUztdTdCCSVS7Y7A1CejNDaxom37/MrxMcOmloV6xAyJ3pn88IzholF/OkhgV6GfuQGe4wccG2IuGMzKaSe/AveoR/2TviZaldzKhhMFtwr6/9MMuh3vY2bBcJJgqxlxgCF2hrtP+AS2lvyOubClvjrZBWRvdmh8=
+Coefficient: vftuHTWnQ/fDVBjY+9IkO72qoJ3xwCTgEyvcQPFfGayaWeTVeaoNncad2qf7HH8HqWHNm96FpY8iyDT9EP9oDftwkNiUBU1GDaxQFHm6eigaransY5e1VG1mK9Cj6L6BFSMpg0Adb3BewwnvqI2gKxLIyY6L9Aie6MA1I7XwIu0=
+Created: 20210328000631
+Publish: 20210328000631
+Activate: 20210328000631
+
+Kops535.ops.+008+48796.key
+; This is a zone-signing key, keyid 48796, for ops535.ops.
+; Created: 20210328000553 (Sat Mar 27 20:05:53 2021)
+; Publish: 20210328000553 (Sat Mar 27 20:05:53 2021)
+; Activate: 20210328000553 (Sat Mar 27 20:05:53 2021)
+ops535.ops. IN DNSKEY 256 3 8 AwEAAeRBMAaINPvYCevWFKLiPeYiQ+8cA8fPBrL6ZvYFlCk4j0TIm5HE TjxCM8cbLveaFXOWj7jgcQ1a2j3FAwHUqtF/kmPHHLrnLfRpzcD51ZSe +RFdIQFwis8TmKvufuniMStoSiyFa3F951r6ui+Dcu3AcpmBXygZr5iu 5INCZivr
+
+Kops535.ops.+008+48796.private
+Private-key-format: v1.3
+Algorithm: 8 (RSASHA256)
+Modulus: 5EEwBog0+9gJ69YUouI95iJD7xwDx88Gsvpm9gWUKTiPRMibkcROPEIzxxsu95oVc5aPuOBxDVraPcUDAdSq0X+SY8ccuuct9GnNwPnVlJ75EV0hAXCKzxOYq+5+6eIxK2hKLIVrcX3nWvq6L4Ny7cBymYFfKBmvmK7kg0JmK+s=
+PublicExponent: AQAB
+PrivateExponent: GNtkgIGay4ZWZkF1E9vxg7tdjI+PddX808bjKY2n+ek36PSzxGcNYhCPlPJH5hz4kxLlaeu/RAYN2EY5MpzXUS6Zz2bN1gmDo0taaC4BaXFx0Kqk9gXoMFnUNTKDw9PiQ8spU4bpnL/XMIb/paPUdtVf3+DTa2L6oJ35JfNJR0k=
+Prime1: 9+ISqALkLKfCilUwakKaDSLa0t7udJiLFXpuJUXRW+Tm+JPlt33FTkJgNzEp3lm7aLtnlkISNEFZC8OjuYLPdw==
+Prime2: 67qTUHwOEAM+EaCKO6eED/HBu5eG6zk97hmvW8lsCouNc4KHN6FtJbX37GJeJ0z34ZuskRIaFCHTSkCez4rsLQ==
+Exponent1: PNe6qI59HxDWSUn7pjlOwqape1TIxsmiadUxL+jhKGMY5i63FcDDKyBTqXhhxHfV7jEBjfoNqdHYX3DXwPMApQ==
+Exponent2: SGe8jAIux5hXXk6zZvNjSwp0+UvnsySX8ySMimLp/qsyvYIgSmQZBHZKOp9UUDoCAZgxfzXSMNDa93m1zgXb2Q==
+Coefficient: Yr8Cu5L00FnSrcRZAkmOLuIWUmxSlfZf1Ns2Xt3Sc6B7YMQ+k1ebpeYPMmOuTt9bL1pHZlvqHoF6EEwVA/v9ZA==
+Created: 20210328000553
+Publish: 20210328000553
+Activate: 20210328000553
+
+DNSSec records
+
+; <<>> DiG 9.11.20-RedHat-9.11.20-5.el8_3.1 <<>> AXFR @127.0.0.1 ops535.ops
+; (1 server found)
+;; global options: +cmd
+ops535.ops.		86400	IN	SOA	pri-dns.ops535.ops. dnsadmin.ops535.ops. 20210220 7200 3600 86400 21600
+ops535.ops.		21600	IN	RRSIG	NSEC 8 2 21600 20210411103303 20210330100324 48796 ops535.ops. BjkxZ5U+6lbXjee754pk3fePwcns/t/L5riFXHez0n8xoLNsFspYPnHa RmGJ+pFGLLiraVWBv97+XoqCVBh8jkkYLNteH4c1DFsuDyY3ifOa2+W/ wQXUa1HdpbzwYgbyExD+6oUVdRUnA1k7WEHWagIBBpyqkusED1pB9dUm 44Y=
+ops535.ops.		21600	IN	NSEC	co-nfs.ops535.ops. NS SOA RRSIG NSEC DNSKEY
+ops535.ops.		86400	IN	RRSIG	NS 8 2 86400 20210418064621 20210327231456 48796 ops535.ops. ez4eDgnEho84wPp75LJSrtEMHC2b88FxocmZwJOzLrGv9IA2lVPPRe7b U+KGcTfx3gm0WToPPqYfGrW/X4roj6g9RwCMXjCStan+pl1D0a7QJBgA 3duTIiI/lrQQ7xG7VJTuQsgxF53YPF2ziTBAPOjjqw1Haa5yiBVfGQE0 lkQ=
+ops535.ops.		86400	IN	RRSIG	SOA 8 2 86400 20210429110324 20210330100324 48796 ops535.ops. oNcz58vOqVqUsEPGqZ417vDaCp2zhFMMs7NsaO96kxOaSODJ6SWMwK3z Y6wD7J9E/UM6Q2I32aYidoQwnet0wyPYWrJYjDAw0JrCEtUxbVI4q7it OpSkh0sgrluiLmvtDFsNUG15PKoPKzPLUMbrenunPKrmFV3i2BtVSztN iSg=
+ops535.ops.		86400	IN	RRSIG	DNSKEY 8 2 86400 20210427001456 20210327231456 48796 ops535.ops. 2zBJnBQNoYkQmjW4nylYjh1aZefaKhlZGezP2tGwOdY0/L14ZlmFpkni 7tiWpCZpVphFLKz2IE1trkYBu1aUJ+hZCcygTmInSUzYgYxWlOnylNv2 9mN1ZYY06BFsK7abgwATFM+2In/OMHBrQpgtpBkehXvxzIpdYjqfWLv/ zWM=
+ops535.ops.		86400	IN	RRSIG	DNSKEY 8 2 86400 20210427001456 20210327231456 13564 ops535.ops. hV8Q36LImfkpAwT9N0SXwzyN/biFqE1ParfsnKdNPKQ8nzClRwQerFyW qbhmfqgAVLrUBFGx0fsI7fvmOCsJkTZacUML4P77u/pi51guq4/zIbsd VYzSzZgnJoKHINx0hskaX5WVMyT1cDS9gHxK/7iUO9GmSrQDCcvufsz+ LCcxVItBVmdWgE3IDTVfsirvH0X8Ie4WYKdp/gH+fwWIZ1uKxfuZoxxp m9bBvSZ5AzRkjXnoSbnRVBCoVUIFFplEok2aA97J+dmBBA3hC7ThRZ9B tB3tVTuS7dvUvFEwZJgKEjqtW2mSo3z/aRsAV+jBjnoAaBhQOZkbgQfX QWc96w==
+ops535.ops.		86400	IN	DNSKEY	256 3 8 AwEAAeRBMAaINPvYCevWFKLiPeYiQ+8cA8fPBrL6ZvYFlCk4j0TIm5HE TjxCM8cbLveaFXOWj7jgcQ1a2j3FAwHUqtF/kmPHHLrnLfRpzcD51ZSe +RFdIQFwis8TmKvufuniMStoSiyFa3F951r6ui+Dcu3AcpmBXygZr5iu 5INCZivr
+ops535.ops.		86400	IN	DNSKEY	257 3 8 AwEAAaLPj7jL7n0eX1VczOZecE8jzhXivV1jAMJN8R3h3Ov+0h9NK2tz zY8jKEXTM/eAA4deh38cWlToK/t73HGTkDj7BwcBr+UjvqawlhxVh3Ik VVVPv7VLuc6gog8WJE3vDp4MLgVA4HUPFYrJwZHDV9rZFTjsr53CjY85 YmjopnYXMDwydh2yrpxbi32ljODkD+jpEJT8qNWjXL7RObqlBvXyPZV3 8UfEUKUTQfx42aKdGdQxXRRY/jh1eWYot7y8KvbjEMmUgD4eB+KrSyAx cf9yhlNCp7Cs8exjuVxdZ01qggAFz0lIdUb8XSAaPSX3pUfI3+19BwVk OEs3pBEL5UM=
+ops535.ops.		86400	IN	NS	pri-dns.ops535.ops.
+co-nfs.ops535.ops.	86400	IN	RRSIG	A 8 3 86400 20210418064621 20210327231456 48796 ops535.ops. kdInF6Rm72lsxFC8MqtB2hC/1ZlWybpX1s5QEzRy9z0bzdp04zLKb7Kc AiwcSKlMqOXr4CO7yYpwViKC1dCmfB/Y4FQZup0H+2Jvg9rfqEU1pfN1 3DMfHsXwQmATcK400tqhPm3ES+QIoqJLCAnEp+gpLuQAhCcO7FCX4k1I m7U=
+co-nfs.ops535.ops.	21600	IN	RRSIG	NSEC 8 3 21600 20210418064621 20210327231456 48796 ops535.ops. WqTiCzKSkLsZF4qA9F7swxFmbEpwkDNZIIc4HV0PEn5nQ0NgaJFtIf5r wcoQWrMwvYOwhRp6pbaI/vFagyiik55NkzYLajyeuFAkwe/dLFLkZsal 2gIdjvKVcnqpfgD0POEXmTOU+IFiQrSkPWYGTxm/lisaZbFRlsoeMDcJ DF8=
+co-nfs.ops535.ops.	21600	IN	NSEC	pri-dns.ops535.ops. A RRSIG NSEC
+co-nfs.ops535.ops.	86400	IN	A	192.168.49.3
+pri-dns.ops535.ops.	86400	IN	RRSIG	A 8 3 86400 20210418064621 20210327231456 48796 ops535.ops. KqPXpFBoX5HWwVm5Zt0Rl6Y9HYK2OdZg9opH+EgQUnN3tG199Ow+qW9s UfoWDMd2JP9pExF0UatTbkalNxpIZL7kXovqpfq9ONXoRUZbdkCFL1ek QKuVe76FCeWQNX/Isq5MbBtFvhySp7aN+/yHNB1opPgwZbWmOrNLAFtX x+M=
+pri-dns.ops535.ops.	21600	IN	RRSIG	NSEC 8 3 21600 20210418064621 20210327231456 48796 ops535.ops. DTqZFgNdqJ8OgOBRR5nhtwSMpU52NdmjVVokTWS8bUMKKhQcQMs3VoWv svvZ8nhnbkxsSspnSyOkefW4l+fFHdWjvKgLXyY6sKBQy8fZy6N0lXBx s+/yPbq4T4Gsh//e/aso1i9Eb06HyJXmoT+sHNfwtzrCJWxm4ENuG3L2 pIw=
+pri-dns.ops535.ops.	21600	IN	NSEC	rns-ldap.ops535.ops. A RRSIG NSEC
+pri-dns.ops535.ops.	86400	IN	A	192.168.49.2
+rns-ldap.ops535.ops.	86400	IN	RRSIG	A 8 3 86400 20210418064621 20210327231456 48796 ops535.ops. wzqzXtbTbjX4J0JVemanmfK4wzC/L3qd/lQrWMrpKJufbWSOBhPcGJnJ 4Imc2F/u09Bc/1cOimuWWRiF4jeAJ6I1zx6VOsKVHLiUmGnMH3rwb6GY CgiK5QxjZw9CkmGjYjjWrnXhAiyVSWVJgk8WqBqLwQRnnioKCILkQGMO FZc=
+rns-ldap.ops535.ops.	21600	IN	RRSIG	NSEC 8 3 21600 20210418064621 20210327231456 48796 ops535.ops. T6RaBc3dW53QJdCu4BRShQYwocFd4iEesKfXkQU1v61qC4eX12eeJkRI hJxTS0FbmxMmhyjNb+9U9TAggVoj67Em810t0QwiNEWlxQJPTySyp8ff iOiTE2R6EuawU3P+TLV9ngFNOm8VSfFcA/VVoKeM1nLZTo/5hfB6q23U V7s=
+rns-ldap.ops535.ops.	21600	IN	NSEC	router.ops535.ops. A RRSIG NSEC
+rns-ldap.ops535.ops.	86400	IN	A	192.168.49.4
+router.ops535.ops.	86400	IN	RRSIG	A 8 3 86400 20210426203201 20210327231456 48796 ops535.ops. NBG5UkQnE3lexyUwnZ9uefwQjI9Y78uW0tqQnLlSkjcRO9ceU4iOyC0a bVAJizIGC7//3cVK6JLV5nUwrevV8u17Noe3TaohGl6IqAcgSX7OVTWX LeodASeo6VJMF6ZYT87zH78gXw+xDGHAe4HbQFAnbRGCRCqiu3Skv/Pn UrY=
+router.ops535.ops.	21600	IN	RRSIG	NSEC 8 3 21600 20210426203201 20210327231456 48796 ops535.ops. O+MI7HXl/Peitcp5epJ3qFZxiYhW/j7cS6ALw5H8iDUiMxlZ0UQT6VZ4 rUb67nmGJ7DAghj5Hsnknwd1pIHQJpOy4di+AngKHIXsCWPcMUs4OFYN L/siruZapf7H+BF1zhXqPUrTsUMvnJL9R+2MpBOsxmhdPP8XD9lnOemX X7Y=
+router.ops535.ops.	21600	IN	NSEC	ops535.ops. A RRSIG NSEC
+router.ops535.ops.	86400	IN	A	192.168.49.1
+ops535.ops.		86400	IN	SOA	pri-dns.ops535.ops. dnsadmin.ops535.ops. 20210220 7200 3600 86400 21600
+;; Query time: 1 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue Mar 30 07:29:47 EDT 2021
+;; XFR size: 27 records (messages 1, bytes 3188)
+
