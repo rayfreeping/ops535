@@ -1,0 +1,4 @@
+Test 1:
+< smtpd_helo_required = no
+< smtpd_helo_restrictions = permit
+< smtpd_delay_reject = no
