@@ -1,0 +1,10 @@
+dn: cn=config
+changetype: modify
+add: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/openldap/certs/vm1.ops535.ops.crt
+-
+add: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/openldap/certs/vm1.ops535.ops.key
+-
+add: olcTLSCACertificateFile
+olcTLSCACertificateFile: /etc/openldap/certs/ca.cert.pem

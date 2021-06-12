@@ -1,0 +1,5 @@
+# set olcRootPW to new value
+dn: olcDatabase={2}mdb,cn=config
+changetype: modify
+replace: olcRootPW
+olcRootPW: {SSHA}NpPDOEfNGywIep+3iEfiQEy72txBsj34
