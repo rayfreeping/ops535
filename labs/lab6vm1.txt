@@ -1,0 +1,143 @@
+OPS535 Lab 6 Check Lab Information
+Mon Mar 22 09:21:18 EDT 2021
+Basic System Info
+hostname:router.gbecker.ops
+
+SELinux status:Enforcing
+
+IP FORWARD:net.ipv4.ip_forward = 1
+
+End Basic System Info
+NET INTERFACES
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=dhcp
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=no
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens192
+UUID=29b6e258-0ffd-4ee3-8f2d-2126105eee4f
+DEVICE=ens192
+ONBOOT=yes
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=none
+IPADDR=192.168.2.1
+PREFIX=24
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=yes
+IPV6_DISABLED=yes
+IPV6INIT=no
+NAME=ens224
+UUID=fc0fe334-d337-3b93-b20c-a148a37dbafd
+DEVICE=ens224
+ONBOOT=yes
+AUTOCONNECT_PRIORITY=-999
+TYPE=Ethernet
+PROXY_METHOD=none
+BROWSER_ONLY=no
+BOOTPROTO=dhcp
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+IPV6_ADDR_GEN_MODE=stable-privacy
+NAME=ens256
+UUID=ff8e2b49-30fc-33cf-85d3-03e191d3796e
+DEVICE=ens256
+ONBOOT=yes
+AUTOCONNECT_PRIORITY=-999
+
+Lab 6 Network Configuration
+IP ADDRESSES
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: ens192: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:50:56:00:01:18 brd ff:ff:ff:ff:ff:ff
+    inet 172.20.2.1/16 brd 172.20.255.255 scope global dynamic noprefixroute ens192
+       valid_lft 76536sec preferred_lft 76536sec
+    inet6 fe80::250:56ff:fe00:118/64 scope link 
+       valid_lft forever preferred_lft forever
+3: ens224: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:6c:00:8c brd ff:ff:ff:ff:ff:ff
+    inet 192.168.2.1/24 brd 192.168.2.255 scope global noprefixroute ens224
+       valid_lft forever preferred_lft forever
+4: ens256: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 00:0c:29:6c:00:96 brd ff:ff:ff:ff:ff:ff
+END IP ADDRESSES
+IP ROUTES
+default via 172.20.255.1 dev ens192 proto dhcp metric 104 
+172.20.0.0/16 dev ens192 proto kernel scope link src 172.20.2.1 metric 104 
+192.168.1.0/24 via 172.20.1.1 dev ens192 proto static metric 100 
+192.168.2.0/24 dev ens224 proto kernel scope link src 192.168.2.1 metric 105 
+192.168.3.0/24 via 172.20.3.1 dev ens192 proto static metric 100 
+192.168.4.0/24 via 172.20.4.1 dev ens192 proto static metric 100 
+192.168.5.0/24 via 172.20.5.1 dev ens192 proto static metric 100 
+192.168.6.0/24 via 172.20.6.1 dev ens192 proto static metric 100 
+192.168.7.0/24 via 172.20.7.1 dev ens192 proto static metric 100 
+192.168.8.0/24 via 172.20.8.1 dev ens192 proto static metric 100 
+192.168.9.0/24 via 172.20.9.1 dev ens192 proto static metric 100 
+192.168.10.0/24 via 172.20.10.1 dev ens192 proto static metric 100 
+192.168.11.0/24 via 172.20.11.1 dev ens192 proto static metric 100 
+192.168.12.0/24 via 172.20.12.1 dev ens192 proto static metric 100 
+192.168.13.0/24 via 172.20.13.1 dev ens192 proto static metric 100 
+192.168.14.0/24 via 172.20.14.1 dev ens192 proto static metric 100 
+192.168.15.0/24 via 172.20.15.1 dev ens192 proto static metric 100 
+192.168.16.0/24 via 172.20.16.1 dev ens192 proto static metric 100 
+192.168.17.0/24 via 172.20.17.1 dev ens192 proto static metric 100 
+192.168.18.0/24 via 172.20.18.1 dev ens192 proto static metric 100 
+192.168.19.0/24 via 172.20.19.1 dev ens192 proto static metric 100 
+192.168.20.0/24 via 172.20.20.1 dev ens192 proto static metric 100 
+192.168.21.0/24 via 172.20.21.1 dev ens192 proto static metric 100 
+192.168.22.0/24 via 172.20.22.1 dev ens192 proto static metric 100 
+192.168.23.0/24 via 172.20.23.1 dev ens192 proto static metric 100 
+192.168.24.0/24 via 172.20.24.1 dev ens192 proto static metric 100 
+192.168.25.0/24 via 172.20.25.1 dev ens192 proto static metric 100 
+192.168.26.0/24 via 172.20.26.1 dev ens192 proto static metric 100 
+192.168.27.0/24 via 172.20.27.1 dev ens192 proto static metric 100 
+192.168.28.0/24 via 172.20.28.1 dev ens192 proto static metric 100 
+192.168.29.0/24 via 172.20.29.1 dev ens192 proto static metric 100 
+192.168.30.0/24 via 172.20.30.1 dev ens192 proto static metric 100 
+192.168.31.0/24 via 172.20.31.1 dev ens192 proto static metric 100 
+192.168.32.0/24 via 172.20.32.1 dev ens192 proto static metric 100 
+192.168.33.0/24 via 172.20.33.1 dev ens192 proto static metric 100 
+192.168.34.0/24 via 172.20.34.1 dev ens192 proto static metric 100 
+192.168.35.0/24 via 172.20.35.1 dev ens192 proto static metric 100 
+192.168.36.0/24 via 172.20.36.1 dev ens192 proto static metric 100 
+192.168.37.0/24 via 172.20.37.1 dev ens192 proto static metric 100 
+192.168.38.0/24 via 172.20.38.1 dev ens192 proto static metric 100 
+192.168.39.0/24 via 172.20.39.1 dev ens192 proto static metric 100 
+192.168.40.0/24 via 172.20.40.1 dev ens192 proto static metric 100 
+192.168.41.0/24 via 172.20.41.1 dev ens192 proto static metric 100 
+192.168.42.0/24 via 172.20.42.1 dev ens192 proto static metric 100 
+192.168.43.0/24 via 172.20.43.1 dev ens192 proto static metric 100 
+END IP ROUTES
+
+Lab 6 Firewall configuration
+firewalld:inactive
+firewalld:disabled
+iptables:active
+iptables:enabled
+IPTABLES Current Configuration
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+   14  1176 ACCEPT     all  --  ens224 ens192  0.0.0.0/0            0.0.0.0/0           
+  103  6732 ACCEPT     all  --  ens192 ens224  0.0.0.0/0            0.0.0.0/0           
+    0     0 REJECT     all  --  *      *       0.0.0.0/0            0.0.0.0/0            reject-with icmp-host-prohibited
+END IPTABLES Current Configuration
+UUID:340c51dc-89fd-42e3-9a74-da365fa7f126
+
+OPS535 Lab 6 End of Check List
+Mon Mar 22 09:21:18 EDT 2021

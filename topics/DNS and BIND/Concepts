@@ -1,0 +1,26 @@
+Must read:
+
+http://www.zytrax.com/books/dns/ch2/index.html
+
+for the following DNS concepts:
+
+    2.2.2 Domains and Delegation
+    2.2.5 Zones and Zone Files
+    2.2.6 DNS Queries
+        2.2.6.1 Recursive Queries
+        2.2.6.2 Iterative Queries
+        2.2.6.3 Inverse Queries
+    2.2.7 Zone Updates
+        2.2.7.1 Full Zone Transfer (AXFR)
+        2.2.7.2 Incremental Zone Transfer (IXFR)
+        2.2.7.3 Notify (NOTIFY)
+        2.2.7.4 Dynamic Zone Updates
+        2.2.7.5 Alternative Dynamic DNS Approaches
+
+2.3 DNS Security 
+    2.3.1 Security Threats
+    2.3.2 Security Types
+    2.3.3 Local Security
+    2.3.4 Server-Server (TSIG Transactions)
+    2.3.5 Server-Client (DNSSEC)
+

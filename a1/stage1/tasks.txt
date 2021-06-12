@@ -1,0 +1,12 @@
+Login to VM1 (router) and generate ssh private/public key pairs (student/instructor)
+    ssh-keygen
+    ssh-copy-id ~/.ssh/id_rsa.pub to VM2 (need to provide student/instructor password)
+    ssh-copy-id ~/.ssh/id_rsa.pub to VM3 (need to provide student/instructor password)
+    ssh-copy-id ~/.ssh/id_rsa.pub to VM4 (need to provide student/instructor password)
+    
+Create/copy inventory file for ansible
+    a1_all_hosts (in a1/playbook/common directory)
+    
+    
+
+    

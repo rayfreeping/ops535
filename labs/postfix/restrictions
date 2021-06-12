@@ -1,0 +1,164 @@
+Test 1:
+< smtpd_helo_required = no
+< smtpd_helo_restrictions = permit
+< smtpd_delay_reject = no
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+helo host.rchan.ops
+250 pri-dns.wsu15.ops
+mail from: root@host.rchan.ops
+250 2.1.0 Ok
+rcpt to: root@pri-dns.wsu15.ops
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+test 1
+.
+250 2.0.0 Ok: queued as D954F10AD058
+quit
+221 2.0.0 Bye
+
+===========================================
+Test 2: skip helo command
+< smtpd_helo_required = yes
+< smtpd_helo_restrictions = permit
+< smtpd_delay_reject = no
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+mail from: root@host.rchan.ops
+503 5.5.1 Error: send HELO/EHLO first
+
+*** required HELO ***
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+mail from: root@host.rchan.ops
+503 5.5.1 Error: send HELO/EHLO first
+HELO host.rchan.ops
+250 pri-dns.wsu15.ops
+mail from: root@host.rchan.ops
+250 2.1.0 Ok
+rcpt to: root@pri-dns.wsu15.ops
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+test 2
+smtpd_helo_required = yes
+.
+250 2.0.0 Ok: queued as 5AF8F10AD058
+bye
+502 5.5.2 Error: command not recognized
+exit
+502 5.5.2 Error: command not recognized
+quit
+221 2.0.0 Bye
+
+Message  7:
+From root@host.rchan.ops  Mon Mar 29 22:03:59 2021
+Return-Path: <root@host.rchan.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Status: R
+
+test 2
+smtpd_helo_required = yes
+
+=========================================
+test 3: smtpd_helo_restrictions
+             reject_non_fqdn_helo_hostname
+
+< smtpd_helo_required = yes
+< smtpd_helo_restrictions = reject_non_fqdn_helo_hostname, permit
+< smtpd_delay_reject = no
+
+[instructor@router ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+help abcde
+502 5.5.2 Error: command not recognized
+helo abcde
+504 5.5.2 <abcde>: Helo command rejected: need fully-qualified hostname
+helo myhost.ca
+250 pri-dns.wsu15.ops
+helo myhost-ca
+504 5.5.2 <myhost-ca>: Helo command rejected: need fully-qualified hostname
+helo a.b.c.d.e.f
+250 pri-dns.wsu15.ops
+
+Anything with a "." will be accepted.
+
+================================================
+test 4: smtpd_client_restrictions =
+             reject_unknown_client_hostname
+the client IP address must be resoved to hostname, otherwise reject
+
+[instructor@pri-dns ~]$ nc 192.168.35.2 25
+450 4.7.25 Client host rejected: cannot find your hostname, [192.168.2.2]
+
+Add "192.168.2.2     mail.gbecker.ops" to /etc/hosts in 192.168.35.2
+
+[instructor@pri-dns ~]$ nc 192.168.35.2 25
+220 pri-dns.wsu15.ops ESMTP Postfix
+helo mail.gbecker.ops
+250 pri-dns.wsu15.ops
+mail from: admin@mail.gbecker.ops
+250 2.1.0 Ok
+rcpt to: root@pri-dns.wsu15.ops
+250 2.1.5 Ok
+data
+354 End data with <CR><LF>.<CR><LF>
+test 4
+
+smtpd_client_restrictions --> reject_unknown_client_hostname
+
+must have PTR or entry in /etc/hosts file.
+.
+250 2.0.0 Ok: queued as 20D0710AD058
+
+== mail received ==
+Message 12:
+From admin@mail.gbecker.ops  Mon Mar 29 23:11:53 2021
+Return-Path: <admin@mail.gbecker.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Status: R
+
+test 4
+
+smtpd_client_restrictions --> reject_unknown_client_hostname
+
+must have PTR or entry in /etc/hosts file.
+
+===========================
+=  Note the difference    =
+===========================
+From admin@mail.gbecker.ops  Mon Mar 29 23:11:53 2021
+Return-Path: <admin@mail.gbecker.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Received: from mail.gbecker.ops (mail.gbecker.ops [192.168.2.2])
+        by pri-dns.wsu15.ops (Postfix) with SMTP id 20D0710AD058
+        for <root@pri-dns.wsu15.ops>; Mon, 29 Mar 2021 23:10:53 -0400 (EDT)
+
+test 4
+
+smtpd_client_restrictions --> reject_unknown_client_hostname
+
+must have PTR or entry in /etc/hosts file.
+
+-------------------------------- and ----
+From root@host.rchan.ops  Mon Mar 29 21:53:51 2021
+Return-Path: <root@host.rchan.ops>
+X-Original-To: root@pri-dns.wsu15.ops
+Delivered-To: root@pri-dns.wsu15.ops
+Received: from host.rchan.ops (unknown [192.168.35.1])
+        by pri-dns.wsu15.ops (Postfix) with SMTP id D954F10AD058
+        for <root@pri-dns.wsu15.ops>; Mon, 29 Mar 2021 21:53:23 -0400 (EDT)
+
+test 1
+============================================
+
+
+             
+             
