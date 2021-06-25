@@ -1,0 +1,128 @@
+Query Students' primary name server from the lab server (172.20.0.1)
+
+Testing primary name server at 172.20.1.2 for myuakash.ops
+;; connection timed out; no servers could be reached
+
+172.20.1.2 for myuakash.ops failed
+Testing primary name server at 172.20.2.2 for bakbar1.ops
+;; connection timed out; no servers could be reached
+
+172.20.2.2 for bakbar1.ops failed
+Testing primary name server at 172.20.3.2 for saxat-rashmikant.ops
+;; connection timed out; no servers could be reached
+
+172.20.3.2 for saxat-rashmikant.ops failed
+Testing primary name server at 172.20.5.2 for vmbhatt2.ops
+;; connection timed out; no servers could be reached
+
+172.20.5.2 for vmbhatt2.ops failed
+Testing primary name server at 172.20.6.2 for rcapua2.ops
+;; connection timed out; no servers could be reached
+
+172.20.6.2 for rcapua2.ops failed
+Testing primary name server at 172.20.7.2 for fdauti.ops
+;; connection timed out; no servers could be reached
+
+172.20.7.2 for fdauti.ops failed
+Testing primary name server at 172.20.8.2 for rdu6.ops
+;; connection timed out; no servers could be reached
+
+172.20.8.2 for rdu6.ops failed
+Testing primary name server at 172.20.9.2 for knengineer.ops
+;; connection timed out; no servers could be reached
+
+172.20.9.2 for knengineer.ops failed
+Testing primary name server at 172.20.10.2 for faganiyu.ops
+;; connection timed out; no servers could be reached
+
+172.20.10.2 for faganiyu.ops failed
+Testing primary name server at 172.20.12.2 for rguo19.ops
+;; connection timed out; no servers could be reached
+
+172.20.12.2 for rguo19.ops failed
+Testing primary name server at 172.20.15.2 for gkarapetyan2.ops
+;; connection timed out; no servers could be reached
+
+172.20.15.2 for gkarapetyan2.ops failed
+Testing primary name server at 172.20.16.2 for skhan405.ops
+;; connection timed out; no servers could be reached
+
+172.20.16.2 for skhan405.ops failed
+Testing primary name server at 172.20.17.2 for jykim32.ops
+;; connection timed out; no servers could be reached
+
+172.20.17.2 for jykim32.ops failed
+Testing primary name server at 172.20.18.2 for skoleini1.ops
+;; connection timed out; no servers could be reached
+
+172.20.18.2 for skoleini1.ops failed
+Testing primary name server at 172.20.19.2 for mmoktader.ops
+;; connection timed out; no servers could be reached
+
+172.20.19.2 for mmoktader.ops failed
+Testing primary name server at 172.20.21.2 for dngan.ops
+;; connection timed out; no servers could be reached
+
+172.20.21.2 for dngan.ops failed
+Testing primary name server at 172.20.22.2 for lkdnguyen.ops
+Server:		172.20.22.2
+Address:	172.20.22.2#53
+
+lkdnguyen.ops
+	origin = host.lkdnguyen.ops
+	mail addr = hostmaster.lkdnguyen.ops
+	serial = 2018042901
+	refresh = 28800
+	retry = 7200
+	expire = 604800
+	minimum = 86400
+
+172.20.22.2 for lkdnguyen.ops [OKAY]
+Testing primary name server at 172.20.23.2 for spatel468.ops
+;; connection timed out; no servers could be reached
+
+172.20.23.2 for spatel468.ops failed
+Testing primary name server at 172.20.24.2 for krrafi.ops
+;; connection timed out; no servers could be reached
+
+172.20.24.2 for krrafi.ops failed
+Testing primary name server at 172.20.26.2 for wsu15.ops
+Server:		172.20.26.2
+Address:	172.20.26.2#53
+
+wsu15.ops
+	origin = pri-dns.wsu15.ops
+	mail addr = root.pri-dns.wsu15.ops
+	serial = 2021062101
+	refresh = 10800
+	retry = 900
+	expire = 604800
+	minimum = 86400
+
+172.20.26.2 for wsu15.ops [OKAY]
+Testing primary name server at 172.20.27.2 for tjtuomisto.ops
+Server:		172.20.27.2
+Address:	172.20.27.2#53
+
+tjtuomisto.ops
+	origin = pri-dns.tjtuomisto.ops
+	mail addr = tjtuomisto.myseneca.ca
+	serial = 2021060601
+	refresh = 43200
+	retry = 900
+	expire = 1814400
+	minimum = 10800
+
+172.20.27.2 for tjtuomisto.ops [OKAY]
+Testing primary name server at 172.20.28.2 for styler.ops
+;; connection timed out; no servers could be reached
+
+172.20.28.2 for styler.ops failed
+Testing primary name server at 172.20.29.2 for pyao7.ops
+;; connection timed out; no servers could be reached
+
+172.20.29.2 for pyao7.ops failed
+Testing primary name server at 172.20.30.2 for syin12.ops
+;; connection timed out; no servers could be reached
+
+172.20.30.2 for syin12.ops failed

@@ -1,0 +1,133 @@
+Query students' root name server via each student's router:
+
+Testing primary name server 192.168.1.4 from 172.20.1.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.1.4 for . failed
+Testing primary name server 192.168.2.4 from 172.20.2.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.2.4 for . failed
+Testing primary name server 192.168.3.4 from 172.20.3.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.3.4 for . failed
+Testing primary name server 192.168.5.4 from 172.20.5.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.5.4 for . failed
+Testing primary name server 192.168.6.4 from 172.20.6.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.6.4 for . failed
+Testing primary name server 192.168.7.4 from 172.20.7.1 for .
+Server:		192.168.7.4
+Address:	192.168.7.4#53
+
+.
+	origin = rns-ldap.fdauti.ops
+	mail addr = fdauti.mysenca.ca
+	serial = 2117322
+	refresh = 3600
+	retry = 900
+	expire = 2592000
+	minimum = 3600
+
+192.168.7.4 for . [OKAY]
+Testing primary name server 192.168.8.4 from 172.20.8.1 for .
+Server:		192.168.8.4
+Address:	192.168.8.4#53
+
+.
+	origin = rns-ldap.rdu6.ops
+	mail addr = dnsadmin.rdu6.ops
+	serial = 2117221
+	refresh = 3600
+	retry = 900
+	expire = 2592000
+	minimum = 3600
+
+192.168.8.4 for . [OKAY]
+Testing primary name server 192.168.9.4 from 172.20.9.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.9.4 for . failed
+Testing primary name server 192.168.10.4 from 172.20.10.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.10.4 for . failed
+Testing primary name server 192.168.12.4 from 172.20.12.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.12.4 for . failed
+Testing primary name server 192.168.15.4 from 172.20.15.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.15.4 for . failed
+Testing primary name server 192.168.16.4 from 172.20.16.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.16.4 for . failed
+Testing primary name server 192.168.17.4 from 172.20.17.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.17.4 for . failed
+Testing primary name server 192.168.18.4 from 172.20.18.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.18.4 for . failed
+Testing primary name server 192.168.19.4 from 172.20.19.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.19.4 for . failed
+Testing primary name server 192.168.21.4 from 172.20.21.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.21.4 for . failed
+Testing primary name server 192.168.22.4 from 172.20.22.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.22.4 for . failed
+Testing primary name server 192.168.23.4 from 172.20.23.1 for .
+ssh: connect to host 172.20.23.1 port 22: No route to host
+192.168.23.4 for . failed
+Testing primary name server 192.168.24.4 from 172.20.24.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.24.4 for . failed
+Testing primary name server 192.168.26.4 from 172.20.26.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.26.4 for . failed
+Testing primary name server 192.168.27.4 from 172.20.27.1 for .
+Server:		192.168.27.4
+Address:	192.168.27.4#53
+
+.
+	origin = rns-ldap.tjtuomisto.ops
+	mail addr = tjtuomisto.myseneca.ca
+	serial = 2116813
+	refresh = 3600
+	retry = 900
+	expire = 2592000
+	minimum = 3600
+
+192.168.27.4 for . [OKAY]
+Testing primary name server 192.168.29.4 from 172.20.29.1 for .
+Server:		192.168.29.4
+Address:	192.168.29.4#53
+
+.
+	origin = rns-ldap.pyao7.ops
+	mail addr = root.rns-ldap.pyao7.ops
+	serial = 2021022601
+	refresh = 28800
+	retry = 7200
+	expire = 604800
+	minimum = 86400
+
+192.168.29.4 for . [OKAY]
+Testing primary name server 192.168.30.4 from 172.20.30.1 for .
+;; connection timed out; no servers could be reached
+
+192.168.30.4 for . failed

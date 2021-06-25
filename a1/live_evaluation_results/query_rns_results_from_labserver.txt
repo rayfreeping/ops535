@@ -1,0 +1,146 @@
+Query students' root name server from the lab server (172.20.0.1)
+
+Testing root name server at 172.20.1.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.1.4 failed
+Testing root name server at 172.20.2.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.2.4 failed
+Testing root name server at 172.20.3.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.3.4 failed
+Testing root name server at 172.20.5.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.5.4 failed
+Testing root name server at 172.20.6.4 ...
+^C
+172.20.6.4 failed
+Testing root name server at 172.20.7.4 ...
+^Z
+[2]+  Stopped                 bash check_rns_dns.bash
+[instructor@localhost a1]$ vi check_rns_dns.bash 
+[instructor@localhost a1]$ bash check_rns_dns.bash 
+Testing root name server at 172.20.1.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.1.4 failed
+Testing root name server at 172.20.2.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.2.4 failed
+Testing root name server at 172.20.3.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.3.4 failed
+Testing root name server at 172.20.5.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.5.4 failed
+Testing root name server at 172.20.6.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.6.4 failed
+Testing root name server at 172.20.7.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.7.4 failed
+Testing root name server at 172.20.8.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.8.4 failed
+Testing root name server at 172.20.9.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.9.4 failed
+Testing root name server at 172.20.10.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.10.4 failed
+Testing root name server at 172.20.12.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.12.4 failed
+Testing root name server at 172.20.15.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.15.4 failed
+Testing root name server at 172.20.16.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.16.4 failed
+Testing root name server at 172.20.17.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.17.4 failed
+Testing root name server at 172.20.18.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.18.4 failed
+Testing root name server at 172.20.19.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.19.4 failed
+Testing root name server at 172.20.21.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.21.4 failed
+Testing root name server at 172.20.22.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.22.4 failed
+Testing root name server at 172.20.23.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.23.4 failed
+Testing root name server at 172.20.24.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.24.4 failed
+Testing root name server at 172.20.26.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.26.4 failed
+Testing root name server at 172.20.27.4 ...
+Server:		172.20.27.4
+Address:	172.20.27.4#53
+
+.
+	origin = rns-ldap.tjtuomisto.ops
+	mail addr = tjtuomisto.myseneca.ca
+	serial = 2116813
+	refresh = 3600
+	retry = 900
+	expire = 2592000
+	minimum = 3600
+
+172.20.27.4 okay
+Testing root name server at 172.20.28.4 ...
+Server:		172.20.28.4
+Address:	172.20.28.4#53
+
+** server can't find .: REFUSED
+
+172.20.28.4 failed
+Testing root name server at 172.20.29.4 ...
+Server:		172.20.29.4
+Address:	172.20.29.4#53
+
+.
+	origin = rns-ldap.pyao7.ops
+	mail addr = root.rns-ldap.pyao7.ops
+	serial = 2021022601
+	refresh = 28800
+	retry = 7200
+	expire = 604800
+	minimum = 86400
+
+172.20.29.4 okay
+Testing root name server at 172.20.30.4 ...
+;; connection timed out; no servers could be reached
+
+172.20.30.4 failed
+

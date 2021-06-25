@@ -1,0 +1,157 @@
+Query Students' primary DNS server via each student's router (192.168.x.1)
+
+Testing primary name server 192.168.1.2 from 172.20.1.1 for myuakash.ops
+;; connection timed out; no servers could be reached
+
+192.168.1.2 for myuakash.ops failed
+Testing primary name server 192.168.2.2 from 172.20.2.1 for bakbar1.ops
+;; connection timed out; no servers could be reached
+
+192.168.2.2 for bakbar1.ops failed
+Testing primary name server 192.168.3.2 from 172.20.3.1 for saxat-rashmikant.ops
+;; connection timed out; no servers could be reached
+
+192.168.3.2 for saxat-rashmikant.ops failed
+Testing primary name server 192.168.5.2 from 172.20.5.1 for vmbhatt2.ops
+Server:		192.168.5.2
+Address:	192.168.5.2#53
+
+vmbhatt2.ops
+	origin = pri-dns.vmbhatt2.ops
+	mail addr = root.vmbhatt2.ops
+	serial = 2011071001
+	refresh = 3600
+	retry = 1800
+	expire = 604800
+	minimum = 86400
+
+192.168.5.2 for vmbhatt2.ops [OKAY]
+Testing primary name server 192.168.6.2 from 172.20.6.1 for rcapua2.ops
+;; connection timed out; no servers could be reached
+
+192.168.6.2 for rcapua2.ops failed
+Testing primary name server 192.168.7.2 from 172.20.7.1 for fdauti.ops
+Server:		192.168.7.2
+Address:	192.168.7.2#53
+
+fdauti.ops
+	origin = pri-dns.fdauti.ops
+	mail addr = fdauti.myseneca.ca
+	serial = 202106201
+	refresh = 28800
+	retry = 7200
+	expire = 604800
+	minimum = 86400
+
+192.168.7.2 for fdauti.ops [OKAY]
+Testing primary name server 192.168.8.2 from 172.20.8.1 for rdu6.ops
+Server:		192.168.8.2
+Address:	192.168.8.2#53
+
+rdu6.ops
+	origin = pri-dns.rdu6.ops
+	mail addr = rdu6\@myseneca.ca
+	serial = 2021062101
+	refresh = 28800
+	retry = 7200
+	expire = 604800
+	minimum = 86400
+
+192.168.8.2 for rdu6.ops [OKAY]
+Testing primary name server 192.168.9.2 from 172.20.9.1 for knengineer.ops
+;; connection timed out; no servers could be reached
+
+192.168.9.2 for knengineer.ops failed
+Testing primary name server 192.168.10.2 from 172.20.10.1 for faganiyu.ops
+;; connection timed out; no servers could be reached
+
+192.168.10.2 for faganiyu.ops failed
+Testing primary name server 192.168.12.2 from 172.20.12.1 for rguo19.ops
+;; connection timed out; no servers could be reached
+
+192.168.12.2 for rguo19.ops failed
+Testing primary name server 192.168.15.2 from 172.20.15.1 for gkarapetyan2.ops
+;; connection timed out; no servers could be reached
+
+192.168.15.2 for gkarapetyan2.ops failed
+Testing primary name server 192.168.16.2 from 172.20.16.1 for skhan405.ops
+;; connection timed out; no servers could be reached
+
+192.168.16.2 for skhan405.ops failed
+Testing primary name server 192.168.17.2 from 172.20.17.1 for jykim32.ops
+Server:		192.168.17.2
+Address:	192.168.17.2#53
+
+** server can't find jykim32.ops: NXDOMAIN
+
+192.168.17.2 for jykim32.ops failed
+Testing primary name server 192.168.18.2 from 172.20.18.1 for skoleini1.ops
+;; connection timed out; no servers could be reached
+
+192.168.18.2 for skoleini1.ops failed
+Testing primary name server 192.168.19.2 from 172.20.19.1 for mmoktader.ops
+;; connection timed out; no servers could be reached
+
+192.168.19.2 for mmoktader.ops failed
+Testing primary name server 192.168.21.2 from 172.20.21.1 for dngan.ops
+;; connection timed out; no servers could be reached
+
+192.168.21.2 for dngan.ops failed
+Testing primary name server 192.168.22.2 from 172.20.22.1 for lkdnguyen.ops
+;; connection timed out; no servers could be reached
+
+192.168.22.2 for lkdnguyen.ops failed
+Testing primary name server 192.168.23.2 from 172.20.23.1 for spatel468.ops
+ssh: connect to host 172.20.23.1 port 22: No route to host
+192.168.23.2 for spatel468.ops failed
+Testing primary name server 192.168.24.2 from 172.20.24.1 for krrafi.ops
+;; connection timed out; no servers could be reached
+
+192.168.24.2 for krrafi.ops failed
+Testing primary name server 192.168.26.2 from 172.20.26.1 for wsu15.ops
+Server:		192.168.26.2
+Address:	192.168.26.2#53
+
+wsu15.ops
+	origin = pri-dns.wsu15.ops
+	mail addr = root.pri-dns.wsu15.ops
+	serial = 2021062101
+	refresh = 10800
+	retry = 900
+	expire = 604800
+	minimum = 86400
+
+192.168.26.2 for wsu15.ops [OKAY]
+Testing primary name server 192.168.27.2 from 172.20.27.1 for tjtuomisto.ops
+Server:		192.168.27.2
+Address:	192.168.27.2#53
+
+tjtuomisto.ops
+	origin = pri-dns.tjtuomisto.ops
+	mail addr = tjtuomisto.myseneca.ca
+	serial = 2021060601
+	refresh = 43200
+	retry = 900
+	expire = 1814400
+	minimum = 10800
+
+192.168.27.2 for tjtuomisto.ops [OKAY]
+Testing primary name server 192.168.29.2 from 172.20.29.1 for pyao7.ops
+Server:		192.168.29.2
+Address:	192.168.29.2#53
+
+pyao7.ops
+	origin = pri-dns.pyao7.ops
+	mail addr = root.pri-dns.pyao7.ops
+	serial = 2021021902
+	refresh = 28800
+	retry = 7200
+	expire = 604800
+	minimum = 86400
+
+192.168.29.2 for pyao7.ops [OKAY]
+Testing primary name server 192.168.30.2 from 172.20.30.1 for syin12.ops
+;; connection timed out; no servers could be reached
+
+192.168.30.2 for syin12.ops failed
+
