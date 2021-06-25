@@ -1,0 +1,4 @@
+file: query_rns_results_from_labserver
+file: query_pri_results_from_labserver
+file: query_rns_results_from_router
+file: query_pri_results_from_router
